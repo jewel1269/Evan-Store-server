@@ -1,0 +1,56 @@
+<div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(145deg, #1b2b3a, #2a4356);">
+    <div class=" bg-opacity-80 p-8 rounded-lg shadow-lg w-full border border-gray-600  max-w-sm">
+      <h1 class="text-center text-2xl text-white  font-bold mb-4">Sign In</h1>
+  
+      <!-- Login Form -->
+      <form action="/login" method="POST" class="space-y-4">
+        <!-- Username -->
+        <div>
+          <label for="username" class="block text-white">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="w-full p-2 mt-1 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 focus:outline-none"
+            placeholder="Username"
+            required
+          />
+        </div>
+  
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-white">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="w-full p-2 mt-1 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-orange-400 focus:outline-none"
+            placeholder="Password"
+            required
+          />
+        </div>
+  
+        <!-- Sign In Button -->
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-orange-400 text-white py-2 rounded-xl hover:bg-orange-500 transition"
+          >
+            SIGN IN
+          </button>
+        </div>
+  
+        <!-- Remember Me and Forgot Password -->
+        <div class="flex justify-between items-center text-sm">
+          <div>
+            <input type="checkbox" id="remember" name="remember" class="mr-1" />
+            <label for="remember" class="text-white ">Remember Me</label>
+          </div>
+          <a href="#" class="text-white ">Forgot Password?</a>
+        </div>
+  
+
+      </form>
+    </div>
+  </div>
+  

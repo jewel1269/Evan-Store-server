@@ -1,0 +1,75 @@
+<div class="container min-h-screen mx-auto p-4">
+    <h2 class="text-xl font-semibold mb-4">Total Orders (<%= products.length %>)</h2>
+  
+    <!-- Sorting field dropdown -->
+    <div class="flex justify-between items-center mb-4">
+      <div class="flex space-x-4">
+        <label for="sortField" class="text-gray-700 font-semibold">Sort by:</label>
+        <select id="sortField" class="bg-white border border-gray-300 rounded px-4 py-2" onchange="sortByField()">
+          <option value="status">Status</option>
+          <option value="updateDate">Update Date</option>
+        </select>
+      </div>
+  
+      <div>
+        <button class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+          <i class="fas fa-trash"></i> Multiple Delete
+        </button>
+      </div>
+    </div>
+  
+    <div class="overflow-x-auto min-h-screen">
+      <table class="min-w-full bg-white border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2 border text-left">
+              <input type="checkbox">
+            </th>
+            <th class="px-4 py-2 border text-left">Product Name</th>
+            <th class="px-4 py-2 border text-left">Customer</th>
+            <th class="px-4 py-2 border text-left">Address</th>
+            <th class="px-4 py-2 border text-left">Number</th>
+            <th class="px-4 py-2 border text-left">Price</th>
+            <th class="px-4 py-2 border text-left">Status</th>
+            <th class="px-4 py-2 border text-left">Order Date</th>
+            <th class="px-4 py-2 border text-left">Action</th>
+          </tr>
+        </thead>
+        <tbody id="productTableBody">
+          <% products.forEach(function(product, index) { %>
+          <tr>
+            <td class="px-4 py-2 border">
+              <input type="checkbox">
+            </td>
+            <td class="px-4 py-2 border"><%= product.name %></td>
+            <td class="px-4 py-2 border">
+              <span class="bg-blue-200 text-blue-800 px-2 py-1 rounded-full text-xs"><%= product.CustomerName %></span>
+            </td>
+            <td class="px-4 py-2 border"><%= product.Address %></td>
+            <td class="px-4 py-2 border"><%= product.Number %></td>
+            <td class="px-4 py-2 border">Tk <%= product.price %></td>
+            <td class="px-4 py-2 border">
+              <span class="bg-green-200 text-green-800 px-2 py-1 rounded-full text-xs"><%= product.status %></span>
+            </td>
+            <td class="px-4 py-2 border"><%= product.updateDate.slice(0, 11) %></td>
+            <td class="px-4 py-2 border">
+              <div class="relative inline-block text-left">
+                <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" type="button" onclick="toggleDropdown(<%= index %>)">
+                  Actions
+                </button>
+                <div id="dropdown-<%= index %>" class="origin-top-right z-[1] absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-10 hidden">
+                  <div class="py-1">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300">Confirm</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  

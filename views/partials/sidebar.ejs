@@ -1,0 +1,67 @@
+<aside class="flex fixed mt-10 flex-col w-64 min-h-screen px-4 py-8 overflow-y-auto bg-gray-900 border-r dark:bg-gray-800 dark:border-gray-600">
+    <div class="flex flex-col items-center">
+        <h2 class="text-xl font-semibold text-white">Evan Store</h2>
+        <span class="text-sm text-gray-400">Admin Dashboard</span>
+    </div>
+
+    <div class="flex flex-col justify-between flex-1 mt-6">
+        <nav>
+            <a id="dashboard-link" class="flex items-center px-4 py-2 mt-5 text-gray-400 hover:bg-gray-700 hover:text-gray-200 rounded-lg" href="/">
+                <i class="fas fa-tachometer-alt w-5 h-5"></i>
+                <span class="mx-4 font-medium">Dashboard</span>
+            </a>
+
+            <a id="orders-link" class="flex items-center px-4 py-2 mt-5 text-gray-400 hover:bg-gray-700 hover:text-gray-200 rounded-lg" href="/order">
+                <i class="fas fa-receipt w-5 h-5"></i>
+                <span class="mx-4 font-medium">Orders</span>
+            </a>
+            
+            <a id="customers-link" class="flex items-center px-4 py-2 mt-5 text-gray-400 hover:bg-gray-700 hover:text-gray-200 rounded-lg" href="/customers">
+                <i class="fas fa-users w-5 h-5"></i>
+                <span class="mx-4 font-medium">Customer</span>
+            </a>
+
+            <a id="products-link" class="flex items-center px-4 py-2 mt-5 text-gray-400 hover:bg-gray-700 hover:text-gray-200 rounded-lg" href="/analysis">
+                <i class="fas fa-chart-line w-5 h-5"></i> <!-- Changed to analysis icon -->
+                <span class="mx-4 font-medium">Analysis</span>
+              </a>
+              
+
+            <a id="logout-link" class="flex items-center px-4 py-2 mt-5 text-gray-400 hover:bg-gray-700 hover:text-gray-200 rounded-lg" href="/logout">
+                <i class="fas fa-sign-out-alt w-5 h-5"></i>
+                <span class="mx-4 font-medium">Logout</span>
+            </a>
+        </nav>
+
+        <div class="flex items-center px-4 -mx-2 mt-5">
+            <img class="object-cover mx-2 rounded-full h-9 w-9" src="https://via.placeholder.com/40" alt="User avatar">
+            <h4 class="mx-2 font-medium text-gray-200 hover:underline">John Doe</h4>
+        </div>
+    </div>
+</aside>
+<script>
+    // Get the current path
+    const currentPath = window.location.pathname;
+
+    // Object to map pathnames to link IDs
+    const routes = {
+        '/': 'dashboard-link',
+        '/order': 'orders-link',
+        '/customers': 'customers-link',
+        '/products': 'products-link',
+        '/settings': 'settings-link',
+        '/logout': 'logout-link'
+    };
+
+    // Get the active link element based on the current path
+    const activeLinkId = routes[currentPath];
+
+    // Apply the active class to the matched route
+    if (activeLinkId) {
+        const activeLink = document.getElementById(activeLinkId);
+        if (activeLink) {
+            activeLink.classList.add('text-gray-700', 'bg-gray-200');
+            activeLink.classList.remove('text-gray-400', 'hover:bg-gray-700', 'hover:text-gray-200');
+        }
+    }
+</script>

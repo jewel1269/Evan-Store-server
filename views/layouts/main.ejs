@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Heroicons CDN (Optional) -->
+    <script src="https://unpkg.com/heroicons@1.0.6"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Title and Meta Description -->
+    <title><%= locals.title %></title>
+    <meta name="description" content="<%= locals.description %>" />
+  </head>
+
+  
+
+  <body>
+    <!-- Condition for showing content based on user variable -->
+
+      <!-- Include header partial -->
+      <%- include('../partials/header.ejs') %>
+      
+      <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white text-gray-900">
+          <!-- Include sidebar partial -->
+          <%- include('../partials/sidebar.ejs') %>
+        </div>
+        
+        <!-- Main Content -->
+        <main class="flex-1 mt-10 p-6 bg-white">
+          <%- body %>
+        </main>
+      </div>
+ 
+
+
+    <!-- Alpine.js for interactive UI -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+
+    <!-- Headless UI for accessible components -->
+    <script src="https://unpkg.com/@headlessui/vue@1.7.9/dist/headlessui.umd.js"></script>
+
+    <!-- Tail Select for custom dropdowns -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tail.select.js/1.0.2/js/tail.select.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Flowbite for additional Tailwind UI components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>
