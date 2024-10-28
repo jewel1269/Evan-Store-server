@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage }).array("image", 3); 
+const upload = multer({ storage: storage }).array("image", 3);
 
 // Render the add product form
 router.get("/", (req, res) => {
@@ -58,25 +58,6 @@ router.post("/add", upload, async (req, res) => {
     return res.status(400).json({ message: "At least one image is required." });
   }
 
-  // Log incoming data for debugging
-  console.log({
-    category,
-    productName,
-    price: { new: newPrice, old: oldPrice },
-    discount,
-    rating,
-    review,
-    description,
-    colors,
-    sizes,
-    instock,
-    delivery,
-    storeName,
-    bestSale,
-    NewArrival,
-    images,
-  });
-
   // Create a new product instance
   const product = new Product({
     category,
@@ -92,24 +73,59 @@ router.post("/add", upload, async (req, res) => {
     description: description || "",
     colors: Array.isArray(colors) ? colors : [],
     sizes: Array.isArray(sizes) ? sizes : [],
-    instock: instock === "on", 
+    instock: instock === "on",
     delivery: {
-      freedelivery: delivery.freedelivery === "on", 
+      freedelivery: delivery.freedelivery === "on",
       returnpolicy: delivery.returnpolicy || "No return policy",
     },
     storeName: storeName || "Evan Store",
-    bestSale: bestSale === "on", 
-    NewArrival: NewArrival === "on", 
+    bestSale: bestSale === "on",
+    NewArrival: NewArrival === "on",
   });
-
-  console.log(product);
 
   try {
     await product.save();
-    res.status(201).json({ message: "Product added successfully!", product });
+    res.render("category/allCategory")
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+//data find by category
+router.get("/byCategory", async (req, res) => {
+  const category = req.query.category;
+  console.log(category);
+
+  if (!category) {
+    return res.status(400).json({ error: "Category query parameter is required." });
+  }
+
+  try {
+    const products = await Product.find({ category });
+
+    if (products.length === 0) {
+      return res.status(404).json({ message: "No products found in this category." });
+    }
+
+    res.render("categoryTable/categoryTable", {products})
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred while fetching products." });
+  }
+});
+
+//get all data
+router.get("/api/byGetProduct", async(req, res)=>{
+  try {
+    const items = await  Product.find();
+    console.log(items);
+    res.send(items)
+    
+  } catch (error) {
+    res.send(401).status({message: "Internal fetching issue"})
+  }
+
+})
 
 module.exports = router;

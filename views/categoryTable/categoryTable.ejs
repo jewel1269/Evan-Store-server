@@ -1,27 +1,27 @@
 <section>
-    
-<h1 class="text-2xl text-center font-bold underline py-2">Boy Fashion</h1>
+  <h1 class="text-2xl text-center font-bold underline py-2">
+    <%= products.length > 0 ? products[0].category : 'No Category Available' %>
+  </h1>
 
-<div class="flex justify-between px-8 align-items-center">
+  <div class="flex justify-between px-8 align-items-center">
     <div class="flex items-center gap-x-3">
       <h2 class="text-lg font-bold text-black">Product List</h2>
       <span
         class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400"
       >
-        <%= products.length %> 
+        <%= products.length %>
       </span>
     </div>
     <div class="mt-2">
       <a
-        href="/add"
+        href="/product"
         class="px-3 py-2 text-white bg-rose-500 hover:bg-rose-700 text-md rounded-full dark:bg-gray-800 dark:text-blue-400"
       >
         Add Product
       </a>
     </div>
   </div>
-<section class="px-6 py-8">
-    
+  <section class="px-6 py-8">
     <div class="overflow-x-auto">
       <table class="min-w-full bg-white shadow-md rounded-lg">
         <thead>
@@ -30,8 +30,8 @@
             <th class="py-4 px-6">IMAGE</th>
             <th class="py-4 px-6">PRICE</th>
             <th class="py-4 px-6">STOCK</th>
-            <th class="py-4 px-6">VOLUME</th>
-            <th class="py-4 px-6">TYPE</th>
+            <th class="py-4 px-6">Color</th>
+            <th class="py-4 px-6">Size</th>
             <th class="py-4 px-6">RATING</th>
             <th class="py-4 px-6"></th>
           </tr>
@@ -40,25 +40,41 @@
           <% products.forEach(product => { %>
           <tr class="border-b hover:bg-gray-50 text-gray-700">
             <td class="py-4 px-6 flex items-center">
-              <input type="checkbox" class="mr-4">
+              <input type="checkbox" class="mr-4" />
               <div>
-                <p class="font-semibold"><%= product.name %></p>
-                <p class="text-sm text-gray-500"><%= product.brand %></p>
+                <p class="font-semibold"><%= product.productName %></p>
+                <p class="text-sm text-gray-500"><%= product. category %></p>
               </div>
             </td>
             <td class="py-4 px-6">
-              <img src="<%= product.image %>" alt="<%= product.name %>" class="w-12 h-12 object-cover rounded-full">
+              <img
+                src="<%= product.image.length > 0 ? product.image[0] : 'loading' %>"
+                alt="<%= product.productName %>"
+                class="w-12 h-12 object-cover rounded-full"
+              />
             </td>
-            <td class="py-4 px-6">$<%= product.price %></td>
+            <td class="py-4 px-6">Tk <%= product.price.new %></td>
             <td class="py-4 px-6 text-gray-500">
-              <span class="font-semibold"><%= product.stock %> Item Left</span><br>
-              <span class="text-xs"><%= product.sold %> Sold</span>
+              <span class="font-semibold"
+                ><%= product.instock ? 'Available' : 'Out of Stock' %></span
+              >
+              <br />
+              <span class="text-xs"
+                ><%= product.instock ? 'For Sold' : 'Not Available' %>
+                Sold</span
+              >
             </td>
-            <td class="py-4 px-6"><%= product.volume %> ml</td>
-            <td class="py-4 px-6"><%= product.type %></td>
+            <td class="py-4 px-6"><%= product.colors %></td>
+            <td class="py-4 px-6">
+              <%= product.sizes && product.sizes.length > 0 ?
+              product.sizes.join(', ') : "Free Size" %>
+            </td>
+
             <td class="py-4 px-6 text-center">
-              <span class="text-orange-500"><%= product.rating %></span><br>
-              <span class="text-xs text-gray-500"><%= product.reviews %> Reviews</span>
+              <span class="text-orange-500"><%= product.rating %></span><br />
+              <span class="text-xs text-gray-500"
+                ><%= product.reviews %> Reviews</span
+              >
             </td>
             <td class="py-4 px-6">
               <button class="text-gray-500 hover:text-black">
@@ -72,4 +88,3 @@
     </div>
   </section>
 </section>
-  

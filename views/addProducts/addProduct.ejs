@@ -33,13 +33,13 @@
                 required
               >
                 <option value="">Select Category</option>
-                <option value="Mushrooms">Woman Fashion</option>
-                <option value="Leafy Green">Men Fashion</option>
-                <option value="Root">Electronics</option>
-                <option value="Root">Home & Lifestyle</option>
-                <option value="Root">Babys & Toys</option>
-                <option value="Root">Groceries & Pets</option>
-                <option value="Root">Health & Beauty</option>
+                <option value="Woman_Fashion">Woman Fashion</option>
+                <option value="Men_Fashion">Men Fashion</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Home_Lifestyle">Home & Lifestyle</option>
+                <option value="Babys_Toys">Babys & Toys</option>
+                <option value="Groceries_Pets">Groceries & Pets</option>
+                <option value="Health_Beauty">Health & Beauty</option>
               </select>
             </div>
             <div>
@@ -156,39 +156,112 @@
         <!-- Colors & Sizes Section -->
         <section class="mb-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Colors -->
             <div>
-              <label for="colors" class="block text-gray-600 font-semibold mb-2"
+              <label class="block text-gray-600 font-semibold mb-2"
                 >Colors</label
               >
-              <select
-                id="colors"
-                name="colors"
-                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                required
-              >
-                <option value="Red">Red</option>
-                <option value="Blue">Blue</option>
-                <option value="Green">Green</option>
-                <option value="Black">Black</option>
-                <option value="White">White</option>
-              </select>
+              <div class="flex flex-wrap gap-4">
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="colors[]"
+                    value="Red"
+                    class="mr-2"
+                  />
+                  Red
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="colors[]"
+                    value="Blue"
+                    class="mr-2"
+                  />
+                  Blue
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="colors[]"
+                    value="Green"
+                    class="mr-2"
+                  />
+                  Green
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="colors[]"
+                    value="Black"
+                    class="mr-2"
+                  />
+                  Black
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="colors[]"
+                    value="White"
+                    class="mr-2"
+                  />
+                  White
+                </label>
+              </div>
             </div>
+
+            <!-- Sizes -->
             <div>
-              <label for="sizes" class="block text-gray-600 font-semibold mb-2"
+              <label class="block text-gray-600 font-semibold mb-2"
                 >Sizes</label
               >
-              <select
-                id="sizes"
-                name="sizes"
-                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                required
-              >
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-              </select>
+              <div class="flex flex-wrap gap-4">
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="sizes[]"
+                    value="S"
+                    class="mr-2"
+                  />
+                  S
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="sizes[]"
+                    value="M"
+                    class="mr-2"
+                  />
+                  M
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="sizes[]"
+                    value="L"
+                    class="mr-2"
+                  />
+                  L
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="sizes[]"
+                    value="XL"
+                    class="mr-2"
+                  />
+                  XL
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="sizes[]"
+                    value="XXL"
+                    class="mr-2"
+                  />
+                  XXL
+                </label>
+              </div>
             </div>
           </div>
         </section>

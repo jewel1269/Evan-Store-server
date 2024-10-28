@@ -20,10 +20,10 @@ app.set("layout", "./layouts/main");
 // Import all routes
 const Customer = require("./routes/customer.js");
 const Order = require("./routes/orders.js");
-const connectDB = require("./Controller/connect.js");
 const Analysis = require("./routes/analysis/analysis.js");
 const Category = require("./routes/category/category.js");
 const AddProducts = require("./routes/products/products.js");
+const connectDB = require("./Controller/connect.js");
 
 // Connect to the database using mongoose
 const uri = process.env.MONGO_URI;
