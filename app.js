@@ -12,10 +12,15 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); 
 
+
+// Static files
+app.use(express.static("public"));
+app.use('/uploads', express.static('uploads'));
 // EJS view engine setup
 app.set("view engine", "ejs");
 app.use(expressLayout);
 app.set("layout", "./layouts/main");
+
 
 // Import all routes
 const Customer = require("./routes/customer.js");

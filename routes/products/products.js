@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage }).array("image", 3);
-
 // Render the add product form
 router.get("/", (req, res) => {
   res.render("addProducts/addProduct");
@@ -114,6 +113,8 @@ router.get("/byCategory", async (req, res) => {
     res.status(500).json({ error: "An error occurred while fetching products." });
   }
 });
+
+
 
 //get all data
 router.get("/api/byGetProduct", async(req, res)=>{
