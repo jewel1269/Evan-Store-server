@@ -4,9 +4,7 @@ const multer = require("multer");
 const path = require("path");
 const Product = require("../../models/productSchema/productSchema.js");
 
-
-
-router.use('/uploads', express.static('./uploads'));
+router.use("/uploads", express.static("./uploads"));
 // Set up multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -22,8 +20,6 @@ const upload = multer({ storage: storage }).array("image", 3);
 router.get("/", (req, res) => {
   res.render("addProducts/addProduct");
 });
-
-
 
 // API to add a product
 router.post("/add", upload, async (req, res) => {
@@ -89,7 +85,7 @@ router.post("/add", upload, async (req, res) => {
 
   try {
     await product.save();
-    res.render("category/allCategory")
+    res.render("category/allCategory");
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -98,40 +94,73 @@ router.post("/add", upload, async (req, res) => {
 //data find by category
 router.get("/byCategory", async (req, res) => {
   const category = req.query.category;
-  console.log(category);
 
   if (!category) {
-    return res.status(400).json({ error: "Category query parameter is required." });
+    return res
+      .status(400)
+      .json({ error: "Category query parameter is required." });
   }
 
   try {
     const products = await Product.find({ category });
 
     if (products.length === 0) {
-      return res.status(404).json({ message: "No products found in this category." });
+      return res
+        .status(404)
+        .json({ message: "No products found in this category." });
     }
 
-    res.render("categoryTable/categoryTable", {products})
-
+    res.render("categoryTable/categoryTable", { products });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "An error occurred while fetching products." });
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching products." });
+  }
+});
+
+//get all data
+router.get("/api/byGetProduct", async (req, res) => {
+  try {
+    const items = await Product.find();
+    res.send(items);
+  } catch (error) {
+    res.send(401).status({ message: "Internal fetching issue" });
+  }
+});
+
+//get all data with id
+router.get("/api/byGetProduct/:id", async (req, res) => {
+  try {
+    const item = await Product.findById(req.params.id);
+    if (!item) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    res.status(200).json(item); // Send the found item
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    res.status(500).json({ message: "Internal fetching issue" });
+  }
+});
+
+//data fetch for bestSale
+// Data fetch for bestSale
+router.get('/api/GetProduct', async (req, res) => {
+  try {
+    const { bestSale } = req.query;
+    console.log(bestSale);
+    const isBestSale = bestSale === 'true';
+    const filter = { bestSale: isBestSale };
+
+    const products = await Product.find(filter);
+    
+    res.json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
 
-
-//get all data
-router.get("/api/byGetProduct", async(req, res)=>{
-  try {
-    const items = await  Product.find();
-    console.log(items);
-    res.send(items)
-    
-  } catch (error) {
-    res.send(401).status({message: "Internal fetching issue"})
-  }
-
-})
 
 module.exports = router;
