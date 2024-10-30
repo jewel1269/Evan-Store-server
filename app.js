@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Static files
 app.use(express.static("public"));
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('./uploads'));
 // EJS view engine setup
 app.set("view engine", "ejs");
 app.use(expressLayout);
@@ -28,7 +28,8 @@ const Order = require("./routes/orders.js");
 const Analysis = require("./routes/analysis/analysis.js");
 const Category = require("./routes/category/category.js");
 const AddProducts = require("./routes/products/products.js");
-const connectDB = require("./Controller/connect.js");
+const connectDB = require("./controller/connect.js");
+
 
 // Connect to the database using mongoose
 const uri = process.env.MONGO_URI;
