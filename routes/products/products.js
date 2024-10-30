@@ -96,9 +96,7 @@ router.get("/byCategory", async (req, res) => {
   const category = req.query.category;
 
   if (!category) {
-    return res
-      .status(400)
-      .json({ error: "Category query parameter is required." });
+    return res.status(400).json({ error: "Category query parameter is required." });
   }
 
   try {
@@ -111,6 +109,33 @@ router.get("/byCategory", async (req, res) => {
     }
 
     res.render("categoryTable/categoryTable", { products });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching products." });
+  }
+});
+
+//data find by category
+router.get("/byCategoryClient", async (req, res) => {
+  const category = req.query.category;
+  console.log(category);
+
+  if (!category) {
+    return res.status(400).json({ error: "Category query parameter is required." });
+  }
+
+  try {
+    const products = await Product.find({ category });
+
+    if (products.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No products found in this category." });
+    }
+
+    res.send(products)
   } catch (error) {
     console.error(error);
     res
@@ -145,22 +170,33 @@ router.get("/api/byGetProduct/:id", async (req, res) => {
 
 //data fetch for bestSale
 // Data fetch for bestSale
-router.get('/api/GetProduct', async (req, res) => {
+router.get("/api/GetProduct", async (req, res) => {
   try {
     const { bestSale } = req.query;
-    console.log(bestSale);
-    const isBestSale = bestSale === 'true';
+    const isBestSale = bestSale === "true";
     const filter = { bestSale: isBestSale };
 
     const products = await Product.find(filter);
-    
+
     res.json(products);
   } catch (error) {
     console.error("Error fetching products:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
+router.get("/api/GetProducts", async (req, res) => {
+  try {
+    const { NewArrival } = req.query;
+    const isNewArrival = NewArrival === "true";
+    const filter = { bestSale: isNewArrival };
 
+    const products = await Product.find(filter);
 
+    res.json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 module.exports = router;
