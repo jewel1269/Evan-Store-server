@@ -85,6 +85,10 @@ const productSchema = new mongoose.Schema({
   NewArrival: {
     type: Boolean,
     default: false
+  },
+  quantity:{
+    type:Number,
+    default: 1,
   }
 }, {
   timestamps: true

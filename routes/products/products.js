@@ -96,7 +96,9 @@ router.get("/byCategory", async (req, res) => {
   const category = req.query.category;
 
   if (!category) {
-    return res.status(400).json({ error: "Category query parameter is required." });
+    return res
+      .status(400)
+      .json({ error: "Category query parameter is required." });
   }
 
   try {
@@ -123,7 +125,9 @@ router.get("/byCategoryClient", async (req, res) => {
   console.log(category);
 
   if (!category) {
-    return res.status(400).json({ error: "Category query parameter is required." });
+    return res
+      .status(400)
+      .json({ error: "Category query parameter is required." });
   }
 
   try {
@@ -135,7 +139,7 @@ router.get("/byCategoryClient", async (req, res) => {
         .json({ message: "No products found in this category." });
     }
 
-    res.send(products)
+    res.send(products);
   } catch (error) {
     console.error(error);
     res
@@ -187,11 +191,11 @@ router.get("/api/GetProduct", async (req, res) => {
 router.get("/api/GetProducts", async (req, res) => {
   try {
     const { NewArrival } = req.query;
+    console.log(NewArrival, "hello");
     const isNewArrival = NewArrival === "true";
-    const filter = { bestSale: isNewArrival };
+    const filter = { NewArrival: isNewArrival };
 
     const products = await Product.find(filter);
-
     res.json(products);
   } catch (error) {
     console.error("Error fetching products:", error);
