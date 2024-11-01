@@ -24,11 +24,11 @@ app.set("layout", "./layouts/main");
 
 // Import all routes
 const Customer = require("./routes/customer.js");
-const Order = require("./routes/orders.js");
 const Analysis = require("./routes/analysis/analysis.js");
 const Category = require("./routes/category/category.js");
 const AddProducts = require("./routes/products/products.js");
 const connectDB = require("./controller/connect.js");
+const Orders = require("./routes/orders/orders.js")
 
 
 // Connect to the database using mongoose
@@ -45,10 +45,10 @@ app.get("/", (req, res) => {
 
 // All routes
 app.use("/customers", Customer);
-app.use("/order", Order);
 app.use("/analysis", Analysis);
 app.use("/category", Category);
 app.use("/product", AddProducts);
+app.use("/order", Orders);
 
 // Sample route for health check or status
 app.get("/status", (req, res) => {
