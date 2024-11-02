@@ -3,15 +3,12 @@ const mongoose = require('mongoose'); // No need for 'default' in the require st
 const router = express.Router();
 
 const customerSchema = new mongoose.Schema({
-  identityEmail:{
-    type:String
-  },
   name: {
     type: String, 
     required: true, 
     trim: true 
   },
-  email: {
+  userEmail: {
     type: String,
     required: true,
     unique: true, 
@@ -25,7 +22,6 @@ const customerSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: true,
     trim: true
   },
   address: {
