@@ -34,7 +34,7 @@ router.get("/user", async (req, res) => {
 
   try {
     const user = await Customer.findOne({ userEmail });
-    console.log(user);
+  
 
     // If user not found
     if (!user) {

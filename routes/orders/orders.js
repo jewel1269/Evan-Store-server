@@ -19,25 +19,10 @@ router.post("/api/orders", async (req, res) => {
       items,
       subtotal,
       shipping,
+      userEmail,
       total,
       paymentMethod,
     } = req.body;
-
-    // Log the received data
-    console.log(
-      firstName,
-      lastName,
-      address,
-      apartment,
-      city,
-      phone,
-      email,
-      items,
-      subtotal,
-      shipping,
-      total,
-      paymentMethod
-    );
 
     const order = new Order({
       billingDetails: {
@@ -52,6 +37,7 @@ router.post("/api/orders", async (req, res) => {
       items,
       subtotal,
       shipping,
+      userEmail,
       total,
       paymentMethod,
       status: "Pending",
@@ -79,6 +65,24 @@ router.get("/allOrders", async (req, res) => {
   } catch (error) {
     console.error("Error fetching orders:", error);
     res.status(500).send("Internal Server Error");
+  }
+});
+
+router.get("/api/singleOrder", async (req, res) => {
+  try {
+    const { email } = req.query;
+
+
+    const order = await Order.findOne({ userEmail: email });
+    console.log("Requested email:", order);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    res.json(order);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

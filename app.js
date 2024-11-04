@@ -16,6 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 // Static files
 app.use(express.static("public"));
 app.use('/uploads', express.static('./uploads'));
+
+
 // EJS view engine setup
 app.set("view engine", "ejs");
 app.use(expressLayout);
@@ -31,9 +33,12 @@ const connectDB = require("./controller/connect.js");
 const Orders = require("./routes/orders/orders.js")
 
 
+
 // Connect to the database using mongoose
 const uri = process.env.MONGO_URI;
 connectDB(uri);
+
+
 
 // Default route to show UI
 app.get("/", (req, res) => {
@@ -49,6 +54,7 @@ app.use("/analysis", Analysis);
 app.use("/category", Category);
 app.use("/product", AddProducts);
 app.use("/order", Orders);
+
 
 // Sample route for health check or status
 app.get("/status", (req, res) => {
