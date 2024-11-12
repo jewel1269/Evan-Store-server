@@ -1,74 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.css"
+      rel="stylesheet"
+    />
     <style>
-        /* Add custom styles for calendar height */
-        #calendar {
-            height: 400px; /* Adjust calendar height */
-        }
+      /* Custom styles for calendar height */
+      #calendar {
+        height: 400px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="px-6 py-8 mx-auto dashboard max-w-8xl">
-        <!-- Header Section -->
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold">Dashboard</h2>
-            <div class="flex space-x-4">
-                <button class="btn-nav py-2 px-4 rounded-lg text-gray-600 hover:bg-gray-100">Last 24 hours</button>
-                <button class="btn-nav py-2 px-4 rounded-lg text-gray-600 hover:bg-gray-100 bg-gray-100 font-bold">Last Weeks</button>
-                <button class="btn-nav py-2 px-4 rounded-lg text-gray-600 hover:bg-gray-100">Last Months</button>
-                <a href="http://jewemia.com" class="btn-nav py-2 border-2 border-black px-4 hover:bg-green-600 hover:text-black rounded-lg text-red-600 hover:bg-gray-100">Visit Website</a>
-            </div>
+      <!-- Header Section -->
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold">Dashboard</h2>
+        <div class="flex space-x-4">
+          <button
+            class="btn-nav py-2 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+          >
+            Last 24 hours
+          </button>
+          <button
+            class="btn-nav py-2 px-4 rounded-lg text-gray-600 hover:bg-gray-100 bg-gray-100 font-bold"
+          >
+            Last Weeks
+          </button>
+          <button
+            class="btn-nav py-2 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+          >
+            Last Months
+          </button>
+          <a
+            href="http://jewemia.com"
+            class="btn-nav py-2 border-2 border-black px-4 hover:bg-green-600 hover:text-black rounded-lg text-red-600 hover:bg-gray-100"
+            >Visit Website</a
+          >
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Net Income -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold text-gray-700">Net Income</h3>
+          <p class="text-3xl font-bold text-gray-900 mt-2">BDT 20,178.00</p>
+          <p class="text-sm text-green-600 mt-1">+23.5 From Last Period</p>
         </div>
 
-        <!-- Stats Section -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <!-- Net Income -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-bold text-gray-700">Net Income</h3>
-                <p class="text-3xl font-bold text-gray-900 mt-2">BDT 20,178.00</p>
-                <p class="text-sm text-green-600 mt-1">+23.5 From Last Period</p>
-            </div>
-
-            <!-- Avg Order Value -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-bold text-gray-700">Avr. Order Value</h3>
-                <p class="text-3xl font-bold text-gray-900 mt-2">BDT 896.00</p>
-                <p class="text-sm text-red-600 mt-1">-23.5 From Last Period</p>
-            </div>
-
-            <!-- Orders -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-bold text-gray-700">Orders</h3>
-                <p class="text-3xl font-bold text-gray-900 mt-2">7,563</p>
-                <p class="text-sm text-green-600 mt-1">+12.5 From Last Period</p>
-            </div>
+        <!-- Avg Order Value -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold text-gray-700">Avr. Order Value</h3>
+          <p class="text-3xl font-bold text-gray-900 mt-2">BDT 896.00</p>
+          <p class="text-sm text-red-600 mt-1">-23.5 From Last Period</p>
         </div>
 
-        <!-- Overview Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Audience Graph -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-gray-700">New Audiences</h3>
-                    <button class="text-blue-500 hover:underline">View Report</button>
-                </div>
-                <canvas id="audienceChart" class="mt-4"></canvas> <!-- Chart.js for graph -->
-            </div>
-
-            <!-- Calendar Section -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-bold text-gray-700">Calendar</h3>
-                <div id="calendar" class="bg-gray-100 mt-4 p-4 rounded-lg"></div> <!-- FullCalendar here -->
-            </div>
+        <!-- Orders -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold text-gray-700">Orders</h3>
+          <p class="text-3xl font-bold text-gray-900 mt-2">7,563</p>
+          <p class="text-sm text-green-600 mt-1">+12.5 From Last Period</p>
         </div>
+      </div>
+
+      <!-- Overview Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Audience Graph -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold text-gray-700">New Audiences</h3>
+          <canvas id="audienceChart" class="mt-4"></canvas>
+        </div>
+
+        <!-- Calendar Section -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold text-gray-700">Calendar</h3>
+          <div id="calendar" class="bg-gray-100 mt-4 p-4 rounded-lg"></div>
+        </div>
+      </div>
     </section>
 
     <!-- Load Chart.js for graphs -->
@@ -78,35 +96,45 @@
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>
 
     <script>
-        // Audience Chart (Bar)
-        var ctx = document.getElementById('audienceChart').getContext('2d');
+      // Audience Chart (Bar)
+      document.addEventListener("DOMContentLoaded", function () {
+        var ctx = document.getElementById("audienceChart").getContext("2d");
         var audienceChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Aug 14', 'Aug 15', 'Aug 16', 'Aug 17', 'Aug 18', 'Aug 19', 'Aug 20'],
-                datasets: [{
-                    label: 'New Audiences',
-                    data: [3200, 5000, 5900, 2300, 4900, 4500, 3000],
-                    backgroundColor: '#3B82F6'
-                }]
-            },
-            options: {}
+          type: "bar",
+          data: {
+            labels: [
+              "Aug 14",
+              "Aug 15",
+              "Aug 16",
+              "Aug 17",
+              "Aug 18",
+              "Aug 19",
+              "Aug 20",
+            ],
+            datasets: [
+              {
+                label: "New Audiences",
+                data: [3200, 5000, 5900, 2300, 4900, 4500, 3000],
+                backgroundColor: "#3B82F6",
+              },
+            ],
+          },
+          options: {},
         });
 
         // FullCalendar Initialization
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth', // Monthly view
-                events: [
-                    { title: 'Event 1', date: '2024-10-18' },
-                    { title: 'Event 2', date: '2024-10-21' },
-                    { title: 'Meeting', date: '2024-10-25' }
-                ]
-            });
-            calendar.render();
+        var calendarEl = document.getElementById("calendar");
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth", // Monthly view
+          plugins: [FullCalendar.DayGrid], // Ensure the DayGrid plugin is loaded
+          events: [
+            { title: "Event 1", date: "2024-10-18" },
+            { title: "Event 2", date: "2024-10-21" },
+            { title: "Meeting", date: "2024-10-25" },
+          ],
         });
+        calendar.render();
+      });
     </script>
-</body>
-
+  </body>
 </html>
