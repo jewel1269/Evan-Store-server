@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
 
-    res.render('category/allcategory');
+    res.render('category/allCategory');
 });
 
 
