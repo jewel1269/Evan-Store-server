@@ -81,12 +81,60 @@
           <canvas id="audienceChart" class="mt-4"></canvas>
         </div>
 
-        <!-- Calendar Section -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-lg font-bold text-gray-700">Calendar</h3>
-          <div id="calendar" class="bg-gray-100 mt-4 p-4 rounded-lg"></div>
-        </div>
-      </div>
+          <div>
+            <h1 class="text-center text-2xl fond-bold mb-5">Top Releted Order</h1>
+            <table class="divide-y-2 border-collapse border border-gray-500 w-full">
+              <thead class="bg-gray-200">
+                <tr>
+                  <th class="border border-gray-400 px-4 py-2 text-left">Product Name</th>
+                  <th class="border border-gray-400 px-4 py-2 text-left">Category</th>
+                  <th class="border border-gray-400 px-4 py-2 text-left">Price</th>
+                  <th class="border border-gray-400 px-4 py-2 text-left">Stock Status</th>
+                  <th class="border border-gray-400 px-4 py-2 text-left">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="border border-gray-400 px-4 py-2">Wireless Earbuds</td>
+                  <td class="border border-gray-400 px-4 py-2">Electronics</td>
+                  <td class="border border-gray-400 px-4 py-2">Tk 50</td>
+                  <td class="border border-gray-400 px-4 py-2 text-green-600">In Stock</td>
+                  <td class="border border-gray-400 px-4 py-2">High-quality sound with noise cancellation.</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-400 px-4 py-2">Gaming Chair</td>
+                  <td class="border border-gray-400 px-4 py-2">Furniture</td>
+                  <td class="border border-gray-400 px-4 py-2">Tk 150</td>
+                  <td class="border border-gray-400 px-4 py-2 text-red-600">Out of Stock</td>
+                  <td class="border border-gray-400 px-4 py-2">Ergonomic design for long hours of gaming.</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-400 px-4 py-2">Yoga Mat</td>
+                  <td class="border border-gray-400 px-4 py-2">Fitness</td>
+                  <td class="border border-gray-400 px-4 py-2">Tk 20</td>
+                  <td class="border border-gray-400 px-4 py-2 text-green-600">In Stock</td>
+                  <td class="border border-gray-400 px-4 py-2">Eco-friendly and non-slip surface.</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-400 px-4 py-2">Smart Watch</td>
+                  <td class="border border-gray-400 px-4 py-2">Electronics</td>
+                  <td class="border border-gray-400 px-4 py-2">Tk 120</td>
+                  <td class="border border-gray-400 px-4 py-2 text-green-600">In Stock</td>
+                  <td class="border border-gray-400 px-4 py-2">Tracks fitness, sleep, and notifications.</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-400 px-4 py-2">Desk Lamp</td>
+                  <td class="border border-gray-400 px-4 py-2">Home & Living</td>
+                  <td class="border border-gray-400 px-4 py-2">Tk 30</td>
+                  <td class="border border-gray-400 px-4 py-2 text-green-600">In Stock</td>
+                  <td class="border border-gray-400 px-4 py-2">Adjustable brightness with USB charging.</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            
+          </div>
+    
     </section>
 
     <!-- Load Chart.js for graphs -->
@@ -122,18 +170,6 @@
           options: {},
         });
 
-        // FullCalendar Initialization
-        var calendarEl = document.getElementById("calendar");
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: "dayGridMonth", // Monthly view
-          plugins: [FullCalendar.DayGrid], // Ensure the DayGrid plugin is loaded
-          events: [
-            { title: "Event 1", date: "2024-10-18" },
-            { title: "Event 2", date: "2024-10-21" },
-            { title: "Meeting", date: "2024-10-25" },
-          ],
-        });
-        calendar.render();
       });
     </script>
   </body>
